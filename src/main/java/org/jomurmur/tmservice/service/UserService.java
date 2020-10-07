@@ -1,13 +1,13 @@
 package org.jomurmur.tmservice.service;
 
 
-import org.jomurmur.tmservice.entity.User;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+
+import org.jomurmur.tmservice.dto.UserDTO;
+import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    public String createUser(User u);
-    public List<User> findAll();
+    public String createUser(UserDTO u);
+    public List<UserDTO> findAll();
 }
