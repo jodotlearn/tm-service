@@ -9,23 +9,27 @@ import org.jomurmur.tmservice.service.UserService;
 import org.jomurmur.tmservice.utils.ConverterUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
 @Transactional
+@Slf4j
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private ModelMapper mapper;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public String createUser(UserDTO u) {
-    	System.out.println(u);
-//    	User user = mapper.map(u, User.class);
     	User user = ConverterUtils.map(u, User.class);
-    	System.out.println(user);
+    	user.setPassword(passwordEncoder.encode(u.getPassword()));
         userRepository.save(user);
         return u.getId();
     }
