@@ -1,0 +1,2 @@
+insert into user(id, name, account, password, email, main_role, enabled) 
+    values ('001', 'System Administrator', 'admin', '$2a$10$pYikBqQLgfdSDy4CV9U/r.jH.BUvjcYRf469n7jl6.C6k0HDSx9Da', 'admin@bianbian.com' , 'ADMIN', true);
